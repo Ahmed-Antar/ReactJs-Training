@@ -4,10 +4,13 @@ class TodoForm extends Component {
     onClick(evt){
         evt.preventDefault();
         const txt = this.todoTitle.value;
+        console.log("hello")
         this.props.onNewTodo({
             title : txt,
-            createdAt : new Date()
+            createdAt : new Date(),
+            done : false
         });
+        
         
     }
     render() {

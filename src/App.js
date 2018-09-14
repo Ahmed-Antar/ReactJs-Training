@@ -12,6 +12,16 @@ class App extends Component {
       todos : []
     }
   }
+
+  toggleTodoState(todo, index){
+    let _todo = todo;
+    _todo.done = !todo.done;
+    let newTodos = this.state.todos;
+    newTodos[index] = _todo;
+    this.setState({ todos : newTodos });
+
+  }
+
   onNewTodo(todo){
     let newTodoList = this.state.todos;
     newTodoList.push(todo);
@@ -26,7 +36,8 @@ class App extends Component {
         </header>
         <div className="App-intro">
         <TodoForm onNewTodo = {this.onNewTodo.bind(this)}/>
-         <Liste todos={[]}/>
+         <Liste todos={ this.state.todos} 
+                 onTodoToggle = { this.toggleTodoState.bind(this) }/>
         </div>
       </div>
     );
