@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TodoItem extends Component {
     render(){
@@ -7,6 +8,7 @@ class TodoItem extends Component {
         let str = todo.done ? 'marquer à faire' : 'marquer comme fait' ;
         return(
             <div className="todo" key = "todo-{ todo.title }">
+                    <input type = "checkbox" value = { idx } onClick = { ( e ) => this.props.addToList( idx, e.target.checked ) }/>
                     { todo.title }
                     <button onClick =  { () => this.props.toggleTodo(todo, idx) }>{ str }</button>
                     </div>
@@ -14,4 +16,12 @@ class TodoItem extends Component {
     }
 }
 
+TodoItem.propTypes = {
+    
+    item: PropTypes.object.isRequired,
+    idx: PropTypes.number,
+    addToList:  PropTypes.func,
+    toggleTodo:  PropTypes.func
+
+}
 export default TodoItem;

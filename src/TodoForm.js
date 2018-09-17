@@ -4,6 +4,7 @@ class TodoForm extends Component {
     onClick(evt){
         evt.preventDefault();
         const txt = this.todoTitle.value;
+        this.todoTitle.value = '';
         console.log("hello")
         this.props.onNewTodo({
             title : txt,
