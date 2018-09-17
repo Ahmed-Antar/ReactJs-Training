@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TodoItem from './TodoItem';
 
 class Liste extends Component {
     render() {
@@ -15,10 +16,9 @@ class Liste extends Component {
     showTodos(todos){
         return(
             todos.map((todo, idx) => {
+                
                 return(
-                    <div className="todo" key = "todo-{ todo.title }" onClick =  { () => this.toggleTodo(todo, idx)}>
-                    { todo.title } { todo.done ? 'oui' : 'non' }
-                    </div>
+                    <TodoItem todo = { todo } idx = { idx } toggleTodo = { this.toggleTodo.bind(this) } />
                 )
             })
         );
