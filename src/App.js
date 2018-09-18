@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Liste from './Liste';
-import TodoForm from './TodoForm';
+import Input from './Input';
 
 import './App.css';
 
@@ -35,13 +35,19 @@ class App extends Component {
           <h1 className="App-title">To Do List</h1>
         </header>
         <div className="App-intro">
-        <TodoForm onNewTodo = {this.onNewTodo.bind(this)}/>
+        
+        { this.renderInput() }
          <Liste todos={ this.state.todos} 
                  onTodoToggle = { this.toggleTodoState.bind(this) }/>
         </div>
       </div>
     );
   }
+
+    renderInput(){
+           return (<Input btnText = "Button"onNewTodo = {this.onNewTodo.bind(this)}/>)
+    }
+ 
 }
 
 export default App;
